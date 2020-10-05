@@ -1,0 +1,27 @@
+#container {
+    width: 350px;
+    margin: auto;
+}
+#display{
+    height: 60px;
+    background-color: rgb(220, 221, 218);
+    border-radius: 10px;
+    margin: 5px;
+}
+#keys {
+    display: grid;
+    grid-template-rows: repeat(5, 40px);
+    gap: 5px;
+}
+input{
+    border-radius: 5px;
+    border-style: none;
+}
+#c {
+    grid-area: 1/1/2/3;
+}
+
+#ClearEntry {
+    grid-area: 1/3/2/5;
+}
+
