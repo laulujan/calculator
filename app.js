@@ -36,3 +36,21 @@ function operate(op, a, b){
     }
     return result;
 }
+
+const display = document.querySelector('#display').firstChild;
+
+
+const keys = Array.from(document.querySelector('#keys').children);
+
+keys.forEach(key => key.addEventListener('click', function(event){
+    const target = event.target;
+    let value = target.value;
+    if (target.className == 'num' || target.className == 'operators' || target.className == 'decimal' ) {
+        printDisplay(value);
+    }
+    
+}))
+
+function printDisplay(val){
+    return display.textContent += val;
+ }
