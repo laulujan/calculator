@@ -48,6 +48,7 @@ let firstNum = "";
 let secondNum = ""
 let operator = "";
 let displayContent;
+let res = 0;
 
 
 keys.forEach(key => key.addEventListener('click', function(event){
@@ -71,14 +72,14 @@ keys.forEach(key => key.addEventListener('click', function(event){
         console.log(secondNum)
         return secondNum;
     }
-    if(target.className == 'operators' && secondNum > 0){
+    if(target.className == 'operators' && secondNum.length > 0){
         clearDisplay();
-        isfloat(firstNum);
-        isfloat(secondNum);
-        let res = operate(operator, firstNum, secondNum);
+        firstNum = isfloat(firstNum);
+        secondNum = isfloat(secondNum);
+        res = operate(operator, firstNum, secondNum);
         printDisplay(res);
+
     }
-   
     
 }))
 
