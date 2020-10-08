@@ -59,8 +59,7 @@ keys.forEach(key => key.addEventListener('click', function(event){
 
     if((target.className == 'num' || target.className == 'decimal') && operator.length === 0){
         firstNum +=  value;
-        console.log(parseInt(firstNum))
-        firstNum =parseInt(firstNum);
+        console.log(firstNum)
         return firstNum
     }
     if(target.className == 'operators' && firstNum > 0 && operator.length < 1){
@@ -69,12 +68,13 @@ keys.forEach(key => key.addEventListener('click', function(event){
     }
     if((target.className == 'num' || target.className == 'decimal') && operator.length > 0){
         secondNum += value;
-        console.log(parseInt(secondNum))
-        secondNum = parseInt(secondNum);
+        console.log(secondNum)
         return secondNum;
     }
     if(target.className == 'operators' && secondNum > 0){
         clearDisplay();
+        isfloat(firstNum);
+        isfloat(secondNum);
         let res = operate(operator, firstNum, secondNum);
         printDisplay(res);
     }
@@ -88,4 +88,11 @@ function printDisplay(val){
  }
 function clearDisplay(){
     return displayContent = display.textContent = "";
+}
+function isfloat(str){
+    if(str.includes(".")){
+        return parseFloat(str);
+    }else{
+        return parseInt(str);
+    }
 }
