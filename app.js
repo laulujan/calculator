@@ -2,7 +2,7 @@ function add (a, b) {
 	return a + b;
 }
 
-function subtract (a, b) {
+function substract (a, b) {
 	return a - b;
 	
 }
@@ -32,25 +32,60 @@ function operate(op, a, b){
             break;
     }
     if(!Number.isInteger(result)){
-        return parseFloat(result.toFixed(2));
+        return Number.parseFloat(result).toFixed(2);
+    }else{
+        return result;
     }
-    return result;
+    
 }
 
-const display = document.querySelector('#display').firstChild;
+const display = document.querySelector('#display').children[0];
 
 
 const keys = Array.from(document.querySelector('#keys').children);
 
+let firstNum = "";
+let secondNum = ""
+let operator = "";
+let displayContent;
+
+
 keys.forEach(key => key.addEventListener('click', function(event){
     const target = event.target;
     let value = target.value;
-    if (target.className == 'num' || target.className == 'operators' || target.className == 'decimal' ) {
+    if (target.className == 'num' || target.className == 'decimal' ){ 
         printDisplay(value);
     }
+
+    if((target.className == 'num' || target.className == 'decimal') && operator.length === 0){
+        firstNum +=  value;
+        console.log(parseInt(firstNum))
+        firstNum =parseInt(firstNum);
+        return firstNum
+    }
+    if(target.className == 'operators' && firstNum > 0 && operator.length < 1){
+        operator = value;
+        clearDisplay();
+    }
+    if((target.className == 'num' || target.className == 'decimal') && operator.length > 0){
+        secondNum += value;
+        console.log(parseInt(secondNum))
+        secondNum = parseInt(secondNum);
+        return secondNum;
+    }
+    if(target.className == 'operators' && secondNum > 0){
+        clearDisplay();
+        let res = operate(operator, firstNum, secondNum);
+        printDisplay(res);
+    }
+   
     
 }))
 
 function printDisplay(val){
-    return display.textContent += val;
+    displayContent = display.textContent += val;
+    return displayContent
  }
+function clearDisplay(){
+    return displayContent = display.textContent = "";
+}
