@@ -54,33 +54,9 @@ let res = 0;
 keys.forEach(key => key.addEventListener('click', function(event){
     const target = event.target;
     let value = target.value;
-    if (target.className == 'num' || target.className == 'decimal' ){ 
-        printDisplay(value);
-    }
-
-    if((target.className == 'num' || target.className == 'decimal') && operator.length === 0){
-        firstNum +=  value;
-        console.log(firstNum)
-        return firstNum
-    }
-    if(target.className == 'operators' && firstNum > 0 && operator.length < 1){
-        operator = value;
-        clearDisplay();
-    }
-    if((target.className == 'num' || target.className == 'decimal') && operator.length > 0){
-        secondNum += value;
-        console.log(secondNum)
-        return secondNum;
-    }
-    if(target.className == 'operators' && secondNum.length > 0){
-        clearDisplay();
-        firstNum = isfloat(firstNum);
-        secondNum = isfloat(secondNum);
-        res = operate(operator, firstNum, secondNum);
-        printDisplay(res);
-
-    }
-    
+    let keyClass = target.className;
+    calculate(keyClass, value);
+      
 }))
 
 function printDisplay(val){
@@ -90,10 +66,51 @@ function printDisplay(val){
 function clearDisplay(){
     return displayContent = display.textContent = "";
 }
-function isfloat(str){
+function toNum(str){
     if(str.includes(".")){
         return parseFloat(str);
     }else{
         return parseInt(str);
     }
+}
+
+function calculate(keyClass, value){
+    if (keyClass == 'num' || keyClass == 'decimal' ){ 
+        printDisplay(value);
+    }
+
+    if((keyClass == 'num' || keyClass == 'decimal') && operator.length === 0){
+        firstNum +=  value;
+        console.log(firstNum)
+        return firstNum
+    }
+    if(keyClass == 'operators' && firstNum > 0 && operator.length < 1){
+        operator = value;
+        clearDisplay();
+        return operator
+    }
+    if((keyClass == 'num' || keyClass == 'decimal') && operator.length > 0 && res == 0){
+        secondNum += value;
+        console.log(secondNum)
+        return secondNum;
+    }
+    if(keyClass == 'operators' && secondNum.length > 0){
+        clearDisplay();
+        firstNum = toNum(firstNum);
+        secondNum = toNum(secondNum);
+        res = operate(operator, firstNum, secondNum);
+        printDisplay(res);
+        console.log(res)
+        operator = value;
+        firstNum = res;
+        clearDisplay();
+    }
+    if((keyClass == 'num' || keyClass == 'decimal') && res > 0){
+        firstNum = firstNum.toString();
+        secondNum = "";
+        secondNum += value;
+        console.log(secondNum);
+        return secondNum;
+    }
+    
 }
