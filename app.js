@@ -75,7 +75,10 @@ function toNum(str){
 }
 
 function calculate(keyClass, value){
-    if (keyClass == 'num' || keyClass == 'decimal' ){ 
+    if (keyClass == 'num' || keyClass == 'decimal' ){
+        if(res > 0){
+            clearDisplay();
+        } 
         printDisplay(value);
     }
 
@@ -103,12 +106,12 @@ function calculate(keyClass, value){
         operator = value;
         printDisplay(res);
         firstNum = res;
+        secondNum = "";
     }
     if((keyClass == 'num' || keyClass == 'decimal') && res > 0){
-        clearDisplay();
         firstNum = firstNum.toString();
-        secondNum = "";
         secondNum += value;
+        clearDisplay();
         console.log(secondNum);
         return secondNum;
     }
