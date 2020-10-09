@@ -99,13 +99,13 @@ function calculate(keyClass, value){
         firstNum = toNum(firstNum);
         secondNum = toNum(secondNum);
         res = operate(operator, firstNum, secondNum);
-        printDisplay(res);
         console.log(res)
         operator = value;
+        printDisplay(res);
         firstNum = res;
-        clearDisplay();
     }
     if((keyClass == 'num' || keyClass == 'decimal') && res > 0){
+        clearDisplay();
         firstNum = firstNum.toString();
         secondNum = "";
         secondNum += value;
