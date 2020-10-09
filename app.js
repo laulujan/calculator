@@ -85,15 +85,19 @@ function calculate(keyClass, value){
     if((keyClass == 'num' || keyClass == 'decimal') && operator.length === 0){
         firstNum +=  value;
         console.log(firstNum)
+        lastMove = "firstNum";
         return firstNum
     }
     if(keyClass == 'operators' && firstNum > 0 && operator.length < 1){
         operator = value;
         clearDisplay();
+        lastMove = "operator"
         return operator
     }
     if((keyClass == 'num' || keyClass == 'decimal') && operator.length > 0 && res == 0){
+        clearDisplay();
         secondNum += value;
+        lastMove = "secondNum"
         console.log(secondNum)
         return secondNum;
     }
@@ -107,6 +111,9 @@ function calculate(keyClass, value){
         printDisplay(res);
         firstNum = res;
         secondNum = "";
+        if(value == '='){
+            operator = '';
+        }
     }
     if((keyClass == 'num' || keyClass == 'decimal') && res > 0){
         firstNum = firstNum.toString();
@@ -115,5 +122,26 @@ function calculate(keyClass, value){
         console.log(secondNum);
         return secondNum;
     }
+    if(value == "Clear"){
+        clearDisplay();
+    }
+    if(value == "CE"){
+        if(secondNum.length > 0){
+            clearDisplay();
+            secondNum = "";
+            printDisplay(firstNum); 
+            return;
+        }
+        if(operator.length > 0){
+            operator = "";
+            return;
+        }
+        if(firstNum.length > 0){
+            firstNum = "";
+            return
+        }
+        
+    }
+
     
 }
