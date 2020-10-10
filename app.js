@@ -12,6 +12,9 @@ function multiply (a, b) {
 }
 
 function divide (a, b){
+    if( b == 0){
+        return false;
+    }
     return a / b;
 }
 
@@ -103,6 +106,11 @@ function calculate(keyClass, value){
     }
     if(keyClass == 'operators' && secondNum.length > 0){
         clearDisplay();
+        if(secondNum == 0 && operator == '/'){
+            printDisplay('invalid')
+            secondNum = " ";
+            return
+        }
         firstNum = toNum(firstNum);
         secondNum = toNum(secondNum);
         res = operate(operator, firstNum, secondNum);
@@ -142,6 +150,8 @@ function calculate(keyClass, value){
         }
         
     }
+
+    
 
     
 }
