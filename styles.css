@@ -3,7 +3,12 @@ body{
     background-color: #FFEB81;
     font-family: 'Roboto Mono', monospace;
 }
-
+h1{
+    color: #6f7174;
+    text-shadow:  1px 1px 1px #60B1F4;
+    font-size: 3em ;
+    text-align: center;
+}
 #container {
     width: 350px;
     margin: auto;
@@ -32,6 +37,15 @@ input{
     font-size: 1.6rem;
     background-color: #FFF0A2;
     border: #FFF0A2;
+    color: #f59241 ;
+}
+.operators{
+    color: #308bd4 ;
+    font-weight: bolder;
+}
+.clear{
+    color: #8331b9;
+    font-weight: bolder;
 }
 
 #c {
@@ -43,6 +57,6 @@ input{
 }
 
 input:hover{
-    box-shadow: 3px 3px 3px -2px #8727FF;
+    box-shadow: 3px 3px 3px -2px #FFDD27;
     font-size: 1.8rem;
 }
