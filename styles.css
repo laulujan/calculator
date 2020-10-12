@@ -4,9 +4,6 @@ body{
     font-family: 'Roboto Mono', monospace;
 }
 h1{
-    color: #6f7174;
-    text-shadow:  1px 1px 1px #60B1F4;
-    font-size: 3em ;
     text-align: center;
 }
 #container {
