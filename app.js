@@ -112,7 +112,7 @@ function calculate(keyClass, value){
         clearDisplay();
         enable();
         if(secondNum == 0 && operator == '/'){
-            printDisplay('invalid')
+            printDisplay('Invalid input')
             secondNum = " ";
             return
         }
