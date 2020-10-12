@@ -78,6 +78,9 @@ function toNum(str){
 }
 
 function calculate(keyClass, value){
+    if(value == '.'){
+        disable();
+    }
     if (keyClass == 'num' || keyClass == 'decimal' ){
         if(res > 0){
             clearDisplay();
@@ -95,6 +98,7 @@ function calculate(keyClass, value){
         operator = value;
         clearDisplay();
         lastMove = "operator"
+        enable();
         return operator
     }
     if((keyClass == 'num' || keyClass == 'decimal') && operator.length > 0 && res == 0){
@@ -106,6 +110,7 @@ function calculate(keyClass, value){
     }
     if(keyClass == 'operators' && secondNum.length > 0){
         clearDisplay();
+        enable();
         if(secondNum == 0 && operator == '/'){
             printDisplay('invalid')
             secondNum = " ";
@@ -120,6 +125,7 @@ function calculate(keyClass, value){
         firstNum = res;
         secondNum = "";
         if(value == '='){
+            enable();
             operator = '';
         }
     }
@@ -146,6 +152,7 @@ function calculate(keyClass, value){
         }
         if(firstNum.length > 0){
             firstNum = "";
+            clearDisplay();
             return
         }
         
@@ -154,4 +161,11 @@ function calculate(keyClass, value){
     
 
     
+}
+
+function disable(){
+    document.getElementById("decimal").disabled = true;
+}
+function enable(){
+    document.getElementById("decimal").disabled = false;
 }

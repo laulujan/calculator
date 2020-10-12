@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+
 #container {
     width: 350px;
     margin: auto;
@@ -7,6 +10,13 @@
     background-color: rgb(220, 221, 218);
     border-radius: 10px;
     margin: 5px;
+    padding-right: 5px;
+}
+#result{
+    width: 100%;
+    text-align-last: end;
+    font-size: 2.6rem;
+    font-family: 'Roboto Mono', monospace;
 }
 #keys {
     display: grid;
@@ -16,6 +26,8 @@
 input{
     border-radius: 5px;
     border-style: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.6rem;
 }
 #c {
     grid-area: 1/1/2/3;
