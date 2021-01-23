@@ -11,3 +11,4 @@ The Odin Project: JavaScript Vanilla Calculator
 - Pressing “clear” should wipe out any existing data.. make sure the user is really starting fresh after pressing “clear”
 - Display a snarky error message if the user tries to divide by 0… don’t let it crash your calculator!
 
+live version: [here](https://laulujan.github.io/calculator/)
